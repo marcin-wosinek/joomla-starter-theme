@@ -30,10 +30,8 @@
 
 	<positions>
         <position>header</position>
-        <position>main-top</position>
-        <position>main-center-left</position>
-        <position>main-center-right</position>
-        <position>main-bottom</position>
+        <position>top</position>
+        <position>bottom</position>
         <position>footer</position>
 	</positions>
 

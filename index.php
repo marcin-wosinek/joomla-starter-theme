@@ -13,47 +13,67 @@ JHtml::_('behavior.framework', true);
 /* The following line gets the application object for things like displaying the site name */
 $app = JFactory::getApplication();
 ?>
-<?php echo '<?'; ?>xml version="1.0" encoding="<?php echo $this->_charset ?>"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
-  <head>
-    <!-- The following JDOC Head tag loads all the header and meta information from your site config and content. -->
-    <jdoc:include type="head" />
 
-    <!-- The following line loads the template CSS file located in the template folder. -->
-    <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/reset.css" type="text/css" />
-    <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="<?php echo $this->language; ?>"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="<?php echo $this->language; ?>"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="<?php echo $this->language; ?>"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo $this->language; ?>"> <!--<![endif]-->
 
-    <!-- The following line loads the template JavaScript file located in the template folder. It's blank by default. -->
-    <script type="text/javascript" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/template.js"></script>
-    <script type="text/javascript" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/modernizr.custom.56529.js"></script>
-  </head>
-  <body>
-    <div id="body">
-      <div id="header">
-        <jdoc:include type="modules" name="header" style="xhtml" />
-      </div>
-      <div id="main">
-        <div id="main-top">
-          <jdoc:include type="modules" name="main-top" style="xhtml" />
-        </div>
-        <div id="main-center">
-          <?php if($this->countModules('main-center-left')) : ?>
-            <jdoc:include type="modules" name="main-center-left" style="xhtml" />
-          <?php endif; ?>
-          <jdoc:include type="message" />
-          <jdoc:include type="component" />
-          <?php if($this->countModules('main-center-right')) : ?>
-            <jdoc:include type="modules" name="main-center-right" style="xhtml" />
-          <?php endif; ?>
-        </div>
-        <div id="main-bottom">
-          <jdoc:include type="modules" name="main-bottom" style="xhtml" />
-        </div>
-      </div>
-      <div id="footer">
-        <jdoc:include type="modules" name="footer" style="xhtml" />
-      </div>
-    </div>
-  </body>
+<head>
+	<meta charset="<?php echo $this->_charset ?>">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <!-- The following JDOC Head tag loads all the header and meta information from your site config and content. -->
+  <jdoc:include type="head" />
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- The following line loads the template CSS file located in the template folder. -->
+	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/style.css">
+	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/template.css">
+
+	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/libs/modernizr-2.0.6.min.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/template.js"></script>
+</head>
+
+<body>
+
+	<div id="header-container">
+		<header class="wrapper clearfix">
+      <jdoc:include type="modules" name="header" style="xhtml" />
+		</header>
+	</div>
+	
+	<div id="main-container">
+		<div id="main" class="wrapper clearfix">
+      <?php if($this->countModules('sidebar')) : ?>
+        <aside>
+          <jdoc:include type="modules" name="sidebar" style="xhtml" />
+        </aside>
+      <?php endif; ?>
+      <section>
+        <?php if($this->countModules('top')) : ?>
+          <div id="top">
+            <jdoc:include type="modules" name="top" style="xhtml" />
+          </div>
+        <?php endif; ?>
+        <jdoc:include type="message" />
+        <jdoc:include type="component" />
+        <?php if($this->countModules('bottom')) : ?>
+          <div id="bottom">
+            <jdoc:include type="modules" name="bottom" style="xhtml" />
+          </div>
+        <?php endif; ?>
+      </section>
+		</div> <!-- #main -->
+	</div> <!-- #main-container -->
+
+	<div id="footer-container">
+		<footer class="wrapper">
+      <jdoc:include type="modules" name="footer" style="xhtml" />
+		</footer>
+	</div>
+
+</body>
 </html>

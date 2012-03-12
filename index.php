@@ -12,6 +12,12 @@ JHtml::_('behavior.framework', true);
 
 /* The following line gets the application object for things like displaying the site name */
 $app = JFactory::getApplication();
+
+  $itemid = JRequest::getVar('Itemid');
+  $menu = &JSite::getMenu();
+  $active = $menu->getItem($itemid);
+  $params = $menu->getParams( $active->id );
+  $pageclass = $params->get( 'pageclass_sfx' );
 ?>
 
 <!doctype html>
@@ -37,7 +43,7 @@ $app = JFactory::getApplication();
 	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/template.js"></script>
 </head>
 
-<body>
+<body class="<?php echo $pageclass; ?>">
 
 	<div id="header-container">
 		<header class="wrapper clearfix">
